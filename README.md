@@ -50,13 +50,13 @@ const userBalances = {
 
 ## Questions
 __1. (Optional) If you didn’t have time to complete your intended design, what else would you have done?__
-> ANSWER
+> -
 
 __2. Which took the most time? What did you find most difficult?__
-> ANSWER
+> Implementation of tests using Mocha and Chai took the most time and was thus the most difficult. This is because I am personally not familiar with not only the technology but also not too familiar with running tests.
 
 __3. If we wanted the balance to update on the frontend more often (10 times per second), how would you improve the current system to handle this?__
-> ANSWER
+> I would improve the current system to implement web sockets in order to retrieve data in real time.
 
 __4. How did you find the test overall? If you have any suggestions on how we can improve the test, we'd love to hear them!__
-> ANSWER
+> Overall, the test was comprehensive as it tested my ability to code out RESTful APIs with NodeJS as well as my ability to use third-party APIs.

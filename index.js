@@ -25,18 +25,23 @@ app.get('/getBalance/:userId', async (req, res) => {
     const userId = req.params.userId;
     const userString = `user-${userId}`
     const userData = userBalances[userString];
-    let totalBalance = 0;
-    if (userData.BTC !== undefined) {
-      let btcPrice = await getCurrentPrice("btcusd");
-      totalBalance += parseFloat(userData.BTC) * btcPrice;
-    }
-    if (userData.ETH !== undefined) {
-      let ethPrice = await getCurrentPrice("ethusd");
-      totalBalance += parseFloat(userData.ETH) * ethPrice;
-    }
+    if (userData === undefined) {
+      res.status(404).send("No user with the specified ID found!");
+      return;
+    } else {
+      let totalBalance = 0;
+      if (userData.BTC !== undefined) {
+        let btcPrice = await getCurrentPrice("btcusd");
+        totalBalance += parseFloat(userData.BTC) * btcPrice;
+      }
+      if (userData.ETH !== undefined) {
+        let ethPrice = await getCurrentPrice("ethusd");
+        totalBalance += parseFloat(userData.ETH) * ethPrice;
+      }
 
-    const returnStatement = `${userString} total balance is: USD ${totalBalance.toFixed(2)}`;
-    res.status(200).send(returnStatement);
+      const returnStatement = `${userString} total balance is: USD ${totalBalance.toFixed(2)}`;
+      res.status(200).send(returnStatement);
+    }
   } catch (error) {
     res.status(400).send(error);
   }
